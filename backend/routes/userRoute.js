@@ -1,12 +1,13 @@
 import { Router } from 'express'
-import bcrypt from 'bcryptjs'
+import Event from '../models/events.js'
+import News from '../models/news.js'
 
 const router = Router()
 
 router.get('/', async (req, res) => {
-    const password = "joechillworld"
-    const hashed = await bcrypt.hash(password, 10)
-    res.json({ hashed })
+    const events = await Event.find()
+    const news = await News.find()
+    res.json({ events, news })
 })
 
 export default router

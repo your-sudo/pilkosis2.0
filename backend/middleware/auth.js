@@ -5,7 +5,7 @@ const authMiddleware = (req, res, next) => {
     const token = req.header("Authorization")
 
     if(!token) {
-        return res.status(401).json({message: "Token tidak ada"})
+        return res.status(401).json({message: "unauthorized"})
     }
 
     try {
@@ -15,7 +15,6 @@ const authMiddleware = (req, res, next) => {
     } catch (error) {
         res.status(401).json({message: "Token tidak valid"})
     }
-    console.log("fadoli")
 }
 
 export default authMiddleware
