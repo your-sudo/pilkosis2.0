@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const EvenScheme = new mongoose.Schema({
+const EventSchema = new mongoose.Schema({
     judul: {
         type: String,
         required: true
@@ -13,10 +13,17 @@ const EvenScheme = new mongoose.Schema({
         type: Date,
         required: true
     },
-
-
-    
-
+    time: {
+        type: String
+    },
+    location: {
+        type: String
+    },
+    type: {
+        type: String,
+        enum: ['meeting', 'social', 'academic', 'sports'],
+        default: 'academic'
+    }
 })
 
-export default mongoose.model('Event', EvenScheme)
+export default mongoose.model('Event', EventSchema)

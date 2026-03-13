@@ -1,0 +1,279 @@
+.calendar-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.section-tag--green { background: var(--accent-dim); color: var(--accent); }
+.section-tag--blue { background: var(--blue-dim); color: var(--blue); }
+.section-tag--pink { background: var(--pink-dim); color: var(--pink); }
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.section-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .calendar-grid { grid-template-columns: 1fr; }
+}
+
+/* Mini Calendar */
+.mini-cal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.mini-cal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.mini-cal__month {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.mini-cal__nav {
+  display: flex;
+  gap: 4px;
+}
+
+.mini-cal__nav button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  display: grid;
+  place-items: center;
+}
+
+.mini-cal__nav button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.mini-cal__days-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.mini-cal__day-name {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding: 4px 0;
+}
+
+.mini-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.mini-cal__cell {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+}
+
+.mini-cal__cell:hover:not(.mini-cal__cell--empty) {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.mini-cal__cell--today {
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.mini-cal__cell--selected {
+  background: var(--accent) !important;
+  color: #0a0a0f !important;
+  font-weight: 700;
+}
+
+.mini-cal__cell--has-event::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.mini-cal__cell--selected::after {
+  background: #0a0a0f;
+}
+
+.mini-cal__cell--empty { cursor: default; }
+.mini-cal__cell--other-month { color: var(--text-muted); }
+
+/* Event List */
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.event-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  animation: slideIn 0.3s ease both;
+}
+
+.event-card:hover {
+  border-color: var(--border-bright);
+  transform: translateX(4px);
+  background: var(--bg-elevated);
+}
+
+.event-card--today {
+  border-color: rgba(200,240,74,0.3);
+  box-shadow: 0 0 0 1px rgba(200,240,74,0.1);
+}
+
+.event-date-badge {
+  min-width: 48px;
+  height: 52px;
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+
+.event-date-badge__day {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.event-date-badge__month {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.event-info { flex: 1; min-width: 0; }
+
+.event-info__title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event-info__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.event-info__time,
+.event-info__location {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.event-tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.event-tag--meeting { background: var(--blue-dim); color: var(--blue); }
+.event-tag--social { background: var(--pink-dim); color: var(--pink); }
+.event-tag--academic { background: var(--accent-dim); color: var(--accent); }
+.event-tag--sports { background: rgba(255,160,50,0.12); color: #ffa032; }
+
+.event-list__empty {
+  padding: 3rem;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}

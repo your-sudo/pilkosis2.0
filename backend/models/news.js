@@ -9,9 +9,21 @@ const NewsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    kategori: {
+        type: String,
+        default: 'general'
+    },
+    authorName: {
+        type: String,
+        default: 'Admin'
+    },
+    isNewItem: {
+        type: Boolean,
+        default: true
+    },
     tanggal: {
         type: Date,
-        required: true
+        default: Date.now
     }
 })
 
