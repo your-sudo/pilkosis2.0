@@ -35,7 +35,7 @@ export default function AddNews() {
         throw new Error('Anda tidak memiliki akses (Token tidak ditemukan). Silahkan login kembali.');
       }
 
-      const res = await fetch('http://localhost:3000/api/news', {
+      const res = await fetch('http://${import.meta.env.VITE_API_URL}/api/news', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

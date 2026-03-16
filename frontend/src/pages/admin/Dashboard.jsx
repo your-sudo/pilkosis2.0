@@ -249,8 +249,8 @@ export default function Dashboard() {
     try {
       setIsLoading(true);
       const [newsRes, eventsRes] = await Promise.all([
-        fetch('http://localhost:3000/api/news'),
-        fetch('http://localhost:3000/api/events')
+        fetch('http://${import.meta.env.VITE_API_URL}/api/news'),
+        fetch('http://${import.meta.env.VITE_API_URL}/api/events')
       ]);
 
       if (!newsRes.ok || !eventsRes.ok) throw new Error('Gagal mengambil data dari server');
