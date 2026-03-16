@@ -286,7 +286,7 @@ export default function Dashboard() {
       }
 
       const endpoint = type === 'Berita' ? 'news' : 'events';
-      const res = await fetch(`http://localhost:3000/api/${endpoint}/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/${endpoint}/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -314,7 +314,7 @@ export default function Dashboard() {
         navigate('/login'); return;
       }
       const endpoint = type === 'Berita' ? 'news' : 'events';
-      const res = await fetch(`http://localhost:3000/api/${endpoint}/${data._id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/${endpoint}/${data._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify(updatedData)
