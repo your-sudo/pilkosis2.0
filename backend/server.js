@@ -16,7 +16,9 @@ app.use(helmet())
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://pilkosis2-0.vercel.app"
+    "https://pilkosis2-0.vercel.app",
+    "https://pilkosissmenza.cloud",
+    "https://www.pilkosissmenza.cloud"
   ],
   methods: ['GET','POST','PUT','DELETE'],
   allowedHeaders: ['Content-Type','Authorization']
