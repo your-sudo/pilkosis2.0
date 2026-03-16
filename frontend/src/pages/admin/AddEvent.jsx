@@ -34,8 +34,8 @@ export default function AddEvent() {
         throw new Error('Anda tidak memiliki akses (Token tidak ditemukan). Silahkan login kembali.');
       }
 
-      const res = await fetch('http://${import.meta.env.VITE_API_URL}/api/events', {
-        method: 'POST',
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/events`, {
+        method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
