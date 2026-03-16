@@ -97,7 +97,7 @@ export default function News() {
 
   // Fetch news and occasionally bump timestamps / add new
   useEffect(() => {
-    fetch('http://localhost:3000/api/news')
+    fetch(`${import.meta.env.VITE_API_URL}/api/news`)
       .then(res => res.json())
       .then(data => {
         const formatted = data.map(n => ({
