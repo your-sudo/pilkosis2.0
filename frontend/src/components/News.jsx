@@ -5,9 +5,9 @@ import { CATEGORIES, formatRelativeTime } from '../data/newsData';
 // SVG pattern images for featured cards
 function NewsImage({ category }) {
   const configs = {
-    announcement: { bg: '#1a2a1a', color: '#c8f04a', icon: '📢' },
-    event: { bg: '#1a1a2a', color: '#4a8ff0', icon: '🎉' },
-    achievement: { bg: '#2a2010', color: '#ffa032', icon: '🏆' },
+    'Pemberitahuan': { bg: '#1a2a1a', color: '#c8f04a', icon: '📢' },
+    'Berita Acara': { bg: '#1a1a2a', color: '#4a8ff0', icon: '🎉' },
+    'Pencapaian': { bg: '#2a2010', color: '#ffa032', icon: '🏆' },
     general: { bg: '#2a1020', color: '#f04a8f', icon: '📰' },
   };
   const c = configs[category] || configs.general;
@@ -92,7 +92,7 @@ function NewsCard({ article, featured, compact, delay = 0 }) {
 }
 
 export default function News() {
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState('Semua');
   const [articles, setArticles] = useState([]);
 
   // Fetch news and occasionally bump timestamps / add new
@@ -104,7 +104,7 @@ export default function News() {
           id: n._id,
           title: n.judul,
           excerpt: n.deskripsi,
-          category: n.kategori || 'general',
+          category: n.kategori || 'Pemberitahuan',
           author: { name: n.authorName || 'Admin', initials: (n.authorName || 'A')[0], color: 'var(--blue)' },
           isNew: n.isNewItem,
           timestamp: new Date(n.tanggal)
@@ -120,7 +120,7 @@ export default function News() {
     return () => clearInterval(interval);
   }, []);
 
-  const filtered = filter === 'all'
+  const filtered = filter === 'Semua'
     ? articles
     : articles.filter(a => a.category === filter);
 
@@ -131,10 +131,8 @@ export default function News() {
   return (
     <section className="news-section" id="news">
       <div className="section-header">
-        <div>
-          
-          <h2 className="section-title">Berita Acara</h2>
-        </div>
+        
+        <h2 className="section-title">Berita Acara</h2>
 
         <div className="news-controls">
           {CATEGORIES.map(cat => (

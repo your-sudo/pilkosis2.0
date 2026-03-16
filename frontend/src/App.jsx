@@ -1,6 +1,18 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import AdminLayout from './components/AdminLayout';
+import Dashboard from './pages/admin/Dashboard';
+import AddEvent from './pages/admin/AddEvent';
+import AddNews from './pages/admin/AddNews';
+
+const PrivateRoute = ({ children }) => {
+  const token = localStorage.getItem('adminToken');
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+};
 
 export default function App() {
   return (
@@ -8,12 +20,11 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin/dashboard" element={
-          <div style={{ color: 'white', padding: '4rem', textAlign: 'center' }}>
-            <h1>Dashboard Work in Progress!</h1>
-            <p>You have successfully logged in.</p>
-          </div>
-        } />
+        <Route path="/admin" element={<PrivateRoute><AdminLayout /></PrivateRoute>}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="add-event" element={<AddEvent />} />
+          <Route path="add-news" element={<AddNews />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

@@ -11,7 +11,8 @@ const NewsSchema = new mongoose.Schema({
     },
     kategori: {
         type: String,
-        default: 'general'
+        enum: ['Pemberitahuan', 'Berita Acara', 'Pencapaian'],
+        default: 'Pemberitahuan'
     },
     authorName: {
         type: String,

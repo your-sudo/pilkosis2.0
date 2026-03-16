@@ -20,4 +20,28 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.put('/:id', authMiddleware, async (req, res) => {
+    try {
+        const {judul, deskripsi, kategori, authorName, isNewItem, tanggal} = req.body
+        const updatedNews = await News.findByIdAndUpdate(
+            req.params.id,
+            {judul, deskripsi, kategori, authorName, isNewItem, tanggal},
+            {new: true}
+        )
+        if (!updatedNews) return res.status(404).json({message: 'Berita tidak ditemukan'})
+        res.json({message: 'Berita berhasil diupdate', news: updatedNews})
+    } catch (err) {
+        res.status(500).json({message: err.message})
+    }
+})
+
+router.delete('/:id', authMiddleware, async (req, res) => {
+    try {
+        await News.findByIdAndDelete(req.params.id)
+        res.json({message: 'Berita berhasil dihapus'})
+    } catch (err) {
+        res.status(500).json({message: err.message})
+    }
+})
+
 export default router

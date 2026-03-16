@@ -62,7 +62,7 @@ export const NEWS = [
   },
 ];
 
-const CATEGORIES = ['all', 'announcement', 'event', 'achievement', 'general'];
+const CATEGORIES = ['Semua', 'Pemberitahuan', 'Berita Acara', 'Pencapaian'];
 
 export { CATEGORIES };
 

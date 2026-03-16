@@ -32,6 +32,14 @@ export default function Hero() {
       <div className="hero__actions">
         <a className="hero__btn hero__btn--primary" href="#calendar">Lihat Kalender</a>
         <a className="hero__btn hero__btn--secondary" href="#news">Berita Terbaru →</a>
+        <a 
+          className="hero__btn hero__btn--secondary" 
+          href="https://pilkosis.smkn1kebumen.sch.id" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          Portal Pilkosis 2025-2026 ↗
+        </a>
       </div>
 
       <div className="hero__stats">

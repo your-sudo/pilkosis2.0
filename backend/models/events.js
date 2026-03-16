@@ -21,8 +21,8 @@ const EventSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ['meeting', 'social', 'academic', 'sports'],
-        default: 'academic'
+        enum: ['Keagamaan', 'Olahraga', 'Seni'],
+        default: 'Keagamaan'
     }
 })
 

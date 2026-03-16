@@ -72,7 +72,7 @@ export default function Calendar() {
             endDate: eDate,
             time: timeString,
             location: e.location || '-',
-            type: e.type || 'academic'
+            type: e.type || 'Keagamaan'
           };
         });
         setEventsData(formatted);
@@ -185,9 +185,9 @@ export default function Calendar() {
               {Object.entries(TYPE_LABELS).map(([key, label]) => (
                 <div key={key} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
                   <div style={{ width: 8, height: 8, borderRadius: 2, backgroundColor:
-                    key === 'meeting' ? 'var(--blue)' :
-                    key === 'social' ? 'var(--pink)' :
-                    key === 'academic' ? 'var(--accent)' : '#ffa032'
+                    key === 'Keagamaan' ? 'var(--blue)' :
+                    key === 'Olahraga' ? 'var(--pink)' :
+                    key === 'Seni' ? 'var(--accent)' : '#ffa032'
                   }}></div>
                   <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>{label}</span>
                 </div>

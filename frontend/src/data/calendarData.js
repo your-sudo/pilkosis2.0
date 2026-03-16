@@ -95,8 +95,7 @@ export const MONTH_NAMES = ['January','February','March','April','May','June',
 export const DAY_NAMES = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 
 export const TYPE_LABELS = {
-  meeting: 'Meeting',
-  social: 'Social',
-  academic: 'Academic',
-  sports: 'Sports',
+  Keagamaan: 'Keagamaan',
+  Olahraga: 'Olahraga',
+  Seni: 'Seni',
 };

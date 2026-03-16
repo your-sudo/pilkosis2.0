@@ -20,4 +20,28 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.put('/:id', authMiddleware, async (req, res) => {
+    try {
+        const {judul, start, end, time, location, type} = req.body
+        const updatedEvent = await Event.findByIdAndUpdate(
+            req.params.id, 
+            {judul, start, end, time, location, type},
+            {new: true}
+        )
+        if (!updatedEvent) return res.status(404).json({message: 'Event tidak ditemukan'})
+        res.json({message: 'Event berhasil diupdate', event: updatedEvent})
+    } catch (err) {
+        res.status(500).json({message: err.message})
+    }
+})
+
+router.delete('/:id', authMiddleware, async (req, res) => {
+    try {
+        await Event.findByIdAndDelete(req.params.id)
+        res.json({message: 'Event berhasil dihapus'})
+    } catch (err) {
+        res.status(500).json({message: err.message})
+    }
+})
+
 export default router
